@@ -1,7 +1,7 @@
 import React from 'react'
 import 'components/DayListItem.scss';
 import classnames from 'classnames';
-import formatSpots from '../helpers/formatSpots';
+import { formatSpots } from '../helpers/helpers';
 
 const DayListItem = (props) => {
   const { name, spots, selected, setDay } = props;
