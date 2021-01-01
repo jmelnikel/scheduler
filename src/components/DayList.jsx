@@ -1,12 +1,6 @@
 import React from 'react'
 import DayListItem from './DayListItem';
 
-// Props coming in
-// .days (an array)
-// .day (a string)
-// .setDay
-
-
 const DayList = (props) => {
   const { days, day, setDay } = props;
 
