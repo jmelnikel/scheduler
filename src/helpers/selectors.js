@@ -14,4 +14,15 @@ const getAppointmentsForDay = (state, day) => {
   return appointmentArray;
 };
 
-module.exports = { getAppointmentsForDay }
+const getInterview = (state, interview) => {
+  if (interview !== null) {
+    const interviewerId = interview.interviewer
+    const interviewer = state.interviewers[interviewerId]
+
+    return { ...interview, interviewer }
+  } else {
+    return null;
+  }
+}
+
+module.exports = { getAppointmentsForDay, getInterview }

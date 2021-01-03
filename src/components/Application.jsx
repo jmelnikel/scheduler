@@ -4,7 +4,7 @@ import './Application.scss';
 import DayList from './DayList';
 import 'components/Appointment';
 import Appointment from './Appointment';
-import { getAppointmentsForDay } from '../helpers/selectors'
+import { getAppointmentsForDay, getInterview } from '../helpers/selectors'
 
 
 const Application = () => {
@@ -14,8 +14,18 @@ const Application = () => {
     appointments: {},
     interviewers: {},
   });
-  const setDay = day => setState({ ...state, day });
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const setDay = (day) => setState({ ...state, day });
+  const dailyAppointments = getAppointmentsForDay(state, state.day).map((appointmentItem) => {
+    const interview = getInterview(state, appointmentItem.interview)
+    return (
+      < Appointment
+        key={appointmentItem.id}
+        {...appointmentItem}
+        interview={interview}
+      />
+    )
+  });
+
 
   useEffect(() => {
     Promise.all([
@@ -24,18 +34,17 @@ const Application = () => {
       Promise.resolve(axios.get("api/interviewers")),
     ])
       .then((all) => {
-        setState(prev => {
-          return (
-            {
-              ...prev,
-              days: all[0].data,
-              appointments: all[1].data,
-              interviewers: all[2].data
-            }
-          )
-        });
-      });
-  })
+        setState((prev) => (
+          {
+            ...prev,
+            days: all[0].data,
+            appointments: all[1].data,
+            interviewers: all[2].data,
+          }
+        ))
+      })
+      .catch()
+  }, [])
 
   return (
     <main className="layout">
@@ -47,7 +56,11 @@ const Application = () => {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          <DayList days={state.days} day={state.day} setDay={setDay} />
+          <DayList
+            days={state.days}
+            day={state.day}
+            setDay={setDay}
+          />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
@@ -56,11 +69,7 @@ const Application = () => {
         />
       </section>
       <section className="schedule">
-        {dailyAppointments.map((appointmentItem) => {
-          return (
-            <Appointment key={appointmentItem.id} {...appointmentItem} />
-          )
-        })}
+        {dailyAppointments}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
