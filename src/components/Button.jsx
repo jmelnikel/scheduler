@@ -1,22 +1,7 @@
-import React from 'react';
-import './Button.scss';
-import classnames from 'classnames';
+import React from "react";
 
-const Button = (props) => {
-  const { confirm, danger, onClick, disabled, children } = props;
-  const buttonClass = classnames("button", {
-    "button--confirm": confirm,
-    "button--danger": danger
-  });
+import "components/Button.scss";
 
-  return (
-    <button
-      className={buttonClass}
-      onClick={onClick}
-      disabled={disabled}>
-      {children}
-    </button>
-  );
+export default function Button(props) {
+  return <></>;
 }
-
-export default Button;
