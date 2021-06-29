@@ -9,10 +9,11 @@ const DayList = (props) => {
     setDay,
   } = props;
 
-  const DayListItemList = days.map((item) => {
+  const DayListItemList = days.map((item, index) => {
     const { name, spots } = item;
     return (
       <DayListItem
+        key={index}
         name={name}
         spots={spots}
         selected={name === day}
