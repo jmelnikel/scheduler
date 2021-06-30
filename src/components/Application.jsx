@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "components/Application.scss";
+import "./Application.scss";
 import DayList from './DayList'
 
 export default function Application(props) {
@@ -22,8 +22,6 @@ export default function Application(props) {
       spots: 0,
     },
   ];
-
-
 
   return (
     <main className="layout">

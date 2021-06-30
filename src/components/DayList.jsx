@@ -9,7 +9,7 @@ const DayList = (props) => {
     setDay,
   } = props;
 
-  const DayListItemList = days.map((item, index) => {
+  const dayListItemList = days.map((item, index) => {
     const { name, spots } = item;
     return (
       <DayListItem
@@ -24,7 +24,7 @@ const DayList = (props) => {
 
   return (
     <ul>
-      {DayListItemList}
+      {dayListItemList}
     </ul>
   )
 }
