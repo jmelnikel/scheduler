@@ -10,20 +10,18 @@ const InterviewerList = (props) => {
     setInterviewer,
   } = props;
 
-  const interviewerListItemList = interviewers.map((item, index) => {
+  const interviewerListItemList = interviewers.map((item) => {
     const { name, avatar, id } = item;
     return (
       <InterviewerListItem
-        key={index}
+        key={id}
         name={name}
         avatar={avatar}
         selected={id === interviewer}
-        setinterviewer={() => { setInterviewer(id) }}
+        setInterviewer={() => { setInterviewer(id) }}
       />
     )
   })
-
-
 
   return (
     <section className="interviewers">
