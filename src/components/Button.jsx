@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 import classNames from 'classnames';
 import "components/Button.scss";
 
@@ -9,35 +8,26 @@ const Button = (props) => {
     confirm,
     danger,
     onClick,
-    disabled,
+    disabled
   } = props;
 
   let buttonClass = classNames(
     'button',
     {
-      'button--confirm': confirm,
-      'button--danger': danger,
+      "button--confirm": confirm,
+      "button--danger": danger
     }
   )
 
   return (
-    <>
-      <button
-        className={buttonClass}
-        onClick={onClick}
-        disabled={disabled}
-      >{children}</button>
-    </>
+    <button
+      className={buttonClass}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {children}
+    </button>
   )
-}
-
-Button.propTypes = {
-  children: PropTypes.string,
-  confirm: PropTypes.bool,
-  danger: PropTypes.bool,
-  onClick: PropTypes.func,
-  disabled: PropTypes.bool,
-}
+};
 
 export default Button;
-
