@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "components/Application.scss";
 import DayList from "./DayList";
+import "components/Application.scss";
 
 const Application = () => {
   const [day, setDay] = useState("Monday")
@@ -35,8 +35,8 @@ const Application = () => {
         <nav className="sidebar__menu">
           <DayList
             days={days}
-            day={day}
-            setDay={setDay}
+            value={day}
+            onChange={setDay}
           />
         </nav>
         <img

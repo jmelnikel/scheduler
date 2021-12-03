@@ -4,7 +4,8 @@ import DayListItem from "components/DayListItem";
 const DayList = (props) => {
   const {
     days,
-    setDay,
+    value,
+    onChange,
   } = props;
 
   return (
@@ -20,8 +21,8 @@ const DayList = (props) => {
           key={id}
           name={name}
           spots={spots}
-          selected={props.day === day.name}
-          setDay={setDay}
+          selected={value === name}
+          setDay={onChange}
         />
       })}
     </ul>
